@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package com.rallyhealth.mothership;
+
+message UUID {
+    string id = 1;
+}
+
+message Contact {
+    UUID id = 1;
+    string first_name = 2;
+    string middle_name = 3;
+    string last_name = 4;
+    repeated Phone phone = 5;
+    repeated Address address = 6;
+}
+
+
+message Address {
+    UUID id = 1;
+    string street_line_1 = 2;
+    string street_line_2 = 3;
+    string city = 4;
+    string state = 5;
+    string zip = 6;
+    string country = 7;
+    AddressLabel label = 8;
+
+    enum AddressLabel {
+        NONE = 0;
+        OTHER = 1;
+        HOME = 2;
+        WORK = 3;
+        DOCTOR = 4;
+    }
+}
+
+message Phone {
+    UUID id = 1;
+    string country_code = 2;
+    string area_number = 3;
+    string phone_number = 4;
+    PhoneType type = 5;
+
+    enum PhoneType {
+        NONE = 0;
+        OTHER = 1;
+        MOBILE = 2;
+        LANDLINE = 3;
+        FAX = 4;
+        TTY = 5;
+    }
+}
+
+
